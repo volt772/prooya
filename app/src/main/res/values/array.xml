@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 오픈라이센스 리스트-->
+    <string-array name="licenses">
+        <item>Kakao.sdk</item>
+        <item>Danlew-Joda</item>
+        <item>Glide</item>
+        <item>Retrofit2</item>
+        <item>Ripple-Material</item>
+        <item>RxJava</item>
+    </string-array>
+</resources>
