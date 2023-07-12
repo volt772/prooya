@@ -3,6 +3,7 @@ buildscript {
         google()
         mavenCentral()
         maven("https://devrepo.kakao.com/nexus/content/groups/public/")
+        maven("https://maven.google.com")
     }
     dependencies {
         classpath (Dependencies.gradle)
