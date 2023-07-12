@@ -1,0 +1,127 @@
+apply plugin: 'com.android.application'
+
+/* kotlin plugin */
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    defaultConfig {
+        applicationId 'com.apx5.apx4'
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 24
+        versionName "2.0.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$rootProject.appcompat"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintlayout"
+    implementation "androidx.browser:browser:$rootProject.browser"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.legacy_support_v4"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycle"
+
+    /* FCM*/
+    implementation "com.google.firebase:firebase-core:$rootProject.firebase_core"
+    implementation "com.google.firebase:firebase-messaging:$rootProject.firebase_messaging"
+    implementation "com.google.firebase:firebase-config:$rootProject.firebase_config"
+    implementation "com.google.firebase:firebase-config-ktx:$rootProject.firebase_config_ktx"
+    implementation "com.google.firebase:firebase-analytics-ktx:$firebase_analytics_ktx"
+
+    /* 카카오 로그인 */
+    implementation group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION
+
+    /* Material*/
+    implementation "com.google.android.material:material:$rootProject.material"
+
+    /* Ripple Effect*/
+    implementation "com.balysv:material-ripple:$rootProject.material_ripple"
+
+    /* API Access*/
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.converterGson"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$rootProject.adapterRxjava"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.loggingInterceptor"
+
+    /* RxJava*/
+    implementation "io.reactivex:rxjava:$rootProject.rxjava"
+    implementation "io.reactivex:rxandroid:$rootProject.rxandroid"
+
+    /* Glide*/
+    implementation "com.github.bumptech.glide:glide:$rootProject.glide"
+
+    /* joda time*/
+    implementation "net.danlew:android.joda:$rootProject.joda"
+
+    /* Kotlin MVVM*/
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
+    /* PreferenceManager*/
+    implementation "androidx.preference:preference-ktx:$preference_ktx_version"
+
+    /* Loading spin kit*/
+    implementation "com.github.ybq:Android-SpinKit:$spinkit"
+
+    /* circle image view*/
+    implementation "com.mikhaellopez:circularimageview:$circle_image_view"
+
+    /* Circle Chart View*/
+    implementation "com.ramijemli.percentagechartview:percentagechartview:$percentage_chart_view"
+
+    /* Progress View*/
+    implementation "com.github.skydoves:progressview:$progress_view"
+
+    /* Test*/
+    androidTestImplementation "androidx.test:runner:$rootProject.testRunner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoCore"
+    testImplementation "junit:junit:$rootProject.junit"
+
+    /* coroutine*/
+    implementation 'android.arch.lifecycle:extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+
+    /* Hilt*/
+    implementation "com.google.dagger:hilt-android:$rootProject.dagger_hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$rootProject.dagger_hilt_version"
+
+    /* Paging3*/
+    implementation "androidx.paging:paging-runtime:$rootProject.paging_version"
+    testImplementation "androidx.paging:paging-common:$rootProject.paging_version"
+    implementation "androidx.paging:paging-rxjava2:$rootProject.paging_version"
+    implementation "androidx.paging:paging-rxjava3:$rootProject.paging_version"
+    implementation "androidx.paging:paging-guava:$rootProject.paging_version"
+    implementation "androidx.paging:paging-compose:$rootProject.paging_compose"
+
+    /* Moshi*/
+    implementation "com.squareup.moshi:moshi:$rootProject.moshi"
+
+    implementation project(path: ':domain')
+    implementation project(path: ':data')
+}
+
+apply plugin: 'com.google.gms.google-services'

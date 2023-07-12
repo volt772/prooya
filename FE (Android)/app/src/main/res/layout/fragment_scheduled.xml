@@ -1,0 +1,291 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/md_15"
+        android:background="@color/p_white_10" >
+
+        <!-- 상단 타이틀-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_box_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" >
+
+            <TextView
+                android:id="@+id/tv_box_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey_700"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textAppearance="@style/PageTitle"
+                android:text="경기검색" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_change_season"
+                android:layout_width="@dimen/md_80"
+                android:layout_height="@dimen/md_30"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@drawable/btn_season_change_round"
+                android:textAppearance="@style/SeasonChangeLabel"
+                android:text="@string/search_other_game" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_box_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_line_list"
+            android:layout_marginTop="@dimen/md_15"
+            app:layout_constraintTop_toBottomOf="@id/cl_box_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" >
+
+            <!-- 경기 스코어-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_score_board"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="@dimen/md_400"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" >
+
+                <!-- 상단 팀박스-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_score_team"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/md_0"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/cl_game_detail"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" >
+
+                    <!-- 원정팀-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="@dimen/md_0"
+                        android:layout_height="@dimen/md_0"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@id/cl_score_middle" >
+
+                        <com.mikhaellopez.circularimageview.CircularImageView
+                            android:id="@+id/iv_team_away"
+                            android:layout_width="@dimen/md_100"
+                            android:layout_height="@dimen/md_100"
+                            android:background="@android:color/transparent"
+                            app:civ_shadow="true"
+                            app:civ_shadow_radius="0"
+                            app:civ_border="false"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/tv_team_away"
+                            android:src="@drawable/ic_team_hhe" />
+
+                        <TextView
+                            android:id="@+id/tv_team_away"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/p_white_10"
+                            android:textStyle="bold"
+                            android:background="@color/hhe"
+                            android:paddingTop="@dimen/md_15"
+                            android:paddingBottom="@dimen/md_15"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- 가운데 정보-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_score_middle"
+                        android:layout_width="@dimen/md_100"
+                        android:layout_height="match_parent"
+                        android:background="@color/grey_1000"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" >
+
+                        <TextView
+                            android:id="@+id/tv_score"
+                            android:layout_width="@dimen/md_0"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/p_white_10"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:layout_marginBottom="@dimen/md_30" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/bt_save_play"
+                            android:layout_width="@dimen/md_80"
+                            android:layout_height="@dimen/md_40"
+                            android:layout_marginTop="@dimen/md_10"
+                            android:layout_gravity="center"
+                            android:background="@drawable/btn_game_select_round"
+                            app:layout_constraintTop_toBottomOf="@id/tv_score"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            android:text="@string/save" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- 홈팀-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="@dimen/md_0"
+                        android:layout_height="@dimen/md_0"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintLeft_toRightOf="@id/cl_score_middle" >
+
+                        <com.mikhaellopez.circularimageview.CircularImageView
+                            android:id="@+id/iv_team_home"
+                            android:layout_width="@dimen/md_100"
+                            android:layout_height="@dimen/md_100"
+                            android:background="@android:color/transparent"
+                            app:civ_shadow="true"
+                            app:civ_shadow_radius="0"
+                            app:civ_border="false"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintBottom_toTopOf="@id/tv_team_home"
+                            android:src="@drawable/ic_team_skw" />
+
+                        <TextView
+                            android:id="@+id/tv_team_home"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/p_white_10"
+                            android:textStyle="bold"
+                            android:background="@color/hhe"
+                            android:paddingTop="@dimen/md_15"
+                            android:paddingBottom="@dimen/md_15"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- 하단 경기상세정보박스-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_game_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/md_100"
+                    android:background="@drawable/border_line_bottom_radius"
+                    android:backgroundTint="@color/blue_300"
+                    app:layout_constraintTop_toBottomOf="@id/cl_score_team"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" >
+
+                    <TextView
+                        android:id="@+id/tv_play_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_50"
+                        android:paddingEnd="@dimen/md_10"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                        android:gravity="center"
+                        android:textColor="@color/p_white_10"
+                        android:background="@color/grey_700"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toTopOf="@id/tv_stadium" />
+
+                    <!-- 경기장-->
+                    <TextView
+                        android:id="@+id/tv_stadium"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/md_50"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/p_white_10"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@id/tv_play_date"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Empty-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_no_game"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md_400"
+                android:background="@drawable/border_line_list"
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/md_8"
+                android:paddingTop="@dimen/md_30"
+                android:paddingBottom="@dimen/md_30"
+                app:layout_constraintBottom_toBottomOf="parent" >
+
+                <ImageView
+                    android:id="@+id/iv_empty"
+                    android:layout_width="@dimen/md_150"
+                    android:layout_height="@dimen/md_150"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="@dimen/md_50"
+                    android:src="@drawable/ic_info_type_b" />
+
+                <TextView
+                    android:id="@+id/iv_empty_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/md_15"
+                    android:text="@string/search_other_day"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@id/iv_empty"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                    android:textColor="@color/grey_700" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!-- 로딩중-->
+        <RelativeLayout
+            android:id="@+id/ryt_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_centerInParent="true" >
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/sk_loading"
+                style="@style/SpinKitView.Large.ThreeBounce"
+                android:layout_width="@dimen/md_40"
+                android:layout_height="@dimen/md_40"
+                android:layout_gravity="center"
+                app:SpinKit_Color="@color/red_400" />
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
